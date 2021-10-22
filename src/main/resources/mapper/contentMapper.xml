@@ -8,8 +8,8 @@
     </insert>
 
     <insert id="addRelation">
-        insert into housing_info_reply(replyid, infoid)
-        values(#{param2}, #{param1})
+        insert into housing_info_reply(replyid, infoid, userid)
+        values(#{param2}, #{param1},#{param3})
     </insert>
 
     <update id="updateVote" parameterType="int">

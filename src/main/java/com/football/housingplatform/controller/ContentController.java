@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -51,10 +52,11 @@ public class ContentController {
     }
 
     @RequestMapping("/add/{Infoid}")
-    public String addContent(Content c,@PathVariable("Infoid") int Infoid)
+    public String addContent(Content c, @PathVariable("Infoid") int Infoid, HttpSession session)
     {
+        int userId = (int)session.getAttribute("userId");
         System.out.println(c);
-        contentService.addContent(c,Infoid);
+        contentService.addContent(c,Infoid, userId);
         return "redirect:/reply/message/"+Infoid;
     }
 

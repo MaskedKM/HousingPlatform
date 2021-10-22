@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 @Controller
 public class UserController {
@@ -24,7 +25,7 @@ public class UserController {
     }
 
     @RequestMapping("/Login")
-    public ModelAndView Login(HttpServletRequest request){
+    public ModelAndView Login(HttpServletRequest request, HttpSession session){
         ModelAndView modelAndView = new ModelAndView();
         String name = request.getParameter("name");
 //        System.out.println(name);
@@ -37,8 +38,8 @@ public class UserController {
             modelAndView.setViewName("Login");
         }
         else{
-
-            modelAndView.setViewName("redirect:/myPage/"+k);
+            session.setAttribute("userId",k);
+            modelAndView.setViewName("redirect:/info/list");
         }
         return modelAndView;
     }

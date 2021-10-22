@@ -17,12 +17,13 @@ public class ContentServiceImpl implements ContentService {
     private ContentMapper cm;
 
     public List<Content> showAll(int infoId) {return cm.showAllForId(infoId);}
+
     @Transactional
-    public void addContent(Content c,int Infoid){
+    public void addContent(Content c,int Infoid, int userId){
         cm.addContent(c);
         int replyid = c.getId();
         System.out.println(replyid);
-        cm.addRelation(Infoid, replyid);
+        cm.addRelation(Infoid, replyid, userId);
     }
 
     @Override

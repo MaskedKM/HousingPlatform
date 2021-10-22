@@ -12,7 +12,7 @@ public interface ContentMapper {
     List<Content> showAllForId(int ContentId); // show all
     void deleteContent(int replyId);
     void deleteRelation(int replyId);
-    void addRelation(int infoid, int replyid);
+    void addRelation(int infoid, int replyid, int userId);
     void updateVote(int replyId);
 
     int findUserId(int replyId);
