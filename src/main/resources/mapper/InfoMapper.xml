@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.football.housingplatform.dao.mapper.InfoMapper">
+    <insert id="addInfo">
+        insert into housing_info(id, site, area, price, description)
+        values(null,#{site},#{area},#{price},#{description})
+    </insert>
+
+    <delete id="deleteInfoById" parameterType="int">
+        delete from housing_info where id=#{id}
+    </delete>
+
+    <delete id="deleteRelation">
+        DELETE FROM housing_info_reply WHERE infoid=#{infoId}
+    </delete>
+
+
+    <select id="selectAll" resultType="com.football.housingplatform.dao.domain.HousingInfo">
+        select * from housing_info
+    </select>
+
+    <select id="findBySite" resultType="com.football.housingplatform.dao.domain.HousingInfo" parameterType="string">
+        SELECT * FROM housing_info where site like CONCAT('%',CONCAT(#{site},'%'))
+    </select>
+
+    <select id="findIdByReplyId" resultType="java.lang.Integer">
+        SELECT infoid FROM housing_info_reply WHERE replyid=#{replyId}
+    </select>
+
+    <select id="findById" resultType="com.football.housingplatform.dao.domain.HousingInfo">
+        SELECT * FROM housing_info WHERE id=#{infoId}
+    </select>
+</mapper>

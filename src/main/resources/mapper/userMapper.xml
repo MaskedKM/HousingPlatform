@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.football.housingplatform.dao.mapper.UserMapper">
+    <insert id="InsertUser" parameterType="com.football.housingplatform.dao.domain.User">
+        insert into housing_user(name,password,address,authority)
+        values(#{name},#{password},#{address},#{authority})
+    </insert>
+    <update id="updateUserById">
+        update housing_user set name = #{name}, address = #{address} WHERE id=#{id}
+    </update>
+    <select id="findUserByName" resultType="com.football.housingplatform.dao.domain.User">
+        SELECT * FROM housing_user WHERE name=#{name}
+    </select>
+    <select id="getUserById" resultType="com.football.housingplatform.dao.domain.User">
+        SELECT * FROM housing_user WHERE id=#{id}
+    </select>
+
+</mapper>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace= "com.football.housingplatform.dao.mapper.ContentMapper">
+    <insert id="addContent" parameterType="com.football.housingplatform.dao.domain.Content" useGeneratedKeys="true" keyProperty="id" keyColumn="id">
+        insert into housing_reply(message,time, vote)
+        values(#{message}, now(), #{vote})
+    </insert>
+
+    <insert id="addRelation">
+        insert into housing_info_reply(replyid, infoid)
+        values(#{param2}, #{param1})
+    </insert>
+
+    <update id="updateVote" parameterType="int">
+        UPDATE housing_reply set vote = vote + 1 where id = #{replyId}
+    </update>
+
+    <delete id="deleteContent" parameterType="int">
+        delete from housing_reply where id=#{replyId};
+    </delete>
+
+    <delete id="deleteRelation" parameterType="int">
+        delete from housing_info_reply where replyid=#{replyId};
+    </delete>
+
+    <select id="showAllForId" resultType="com.football.housingplatform.dao.domain.Content">
+        select * from housing_reply r, housing_info_reply ir where ir.infoid = #{id} and ir.replyid = r.id
+    </select>
+
+    <select id="findUserId" parameterType="int" resultType="int">
+        select userid from housing_info_reply where replyid=#{replyId}
+    </select>
+
+</mapper>
