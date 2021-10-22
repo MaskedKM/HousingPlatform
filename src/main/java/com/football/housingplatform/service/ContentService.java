@@ -8,6 +8,6 @@ public interface ContentService {
     List<Content> showAll(int infoId);
     void deleteContent(int replyId);
     void addContent(Content c, int Infoid, int userId);
-    void updateVote(int replyId);
+    void updateVote(int replyId, int userId);
     int findUserId(int replyId);
 }

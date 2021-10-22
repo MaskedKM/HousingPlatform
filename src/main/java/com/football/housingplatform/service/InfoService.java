@@ -7,7 +7,7 @@ import java.util.List;
 public interface InfoService {
     List<HousingInfo> getList();
 
-    void addInfo(HousingInfo HI);
+    void addInfo(HousingInfo HI,int userId);
 
     void deleteInfoById(int id);
 

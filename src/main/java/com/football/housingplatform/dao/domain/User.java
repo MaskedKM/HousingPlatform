@@ -1,11 +1,13 @@
 package com.football.housingplatform.dao.domain;
 
 public class User {
-    public User(String name, String password, int id, String address, int authority) {
+
+    public User(String name, String password, int id, String address, int face, int authority) {
         this.name = name;
         this.password = password;
         this.id = id;
         this.address = address;
+        this.face = face;
         this.authority = authority;
     }
 
@@ -16,7 +18,15 @@ public class User {
     private String password;
     private int id;
     private String address;
+    private int face;
 
+    public int getFace() {
+        return face;
+    }
+
+    public void setFace(int face) {
+        this.face = face;
+    }
 
     public String getName() {
         return name;

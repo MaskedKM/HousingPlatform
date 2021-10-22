@@ -11,9 +11,17 @@
         insert into housing_info_reply(replyid, infoid, userid)
         values(#{param2}, #{param1},#{param3})
     </insert>
+    <insert id="insertUR">
+        insert into housing_reply_user(userid, replyid)
+        values(#{userid},#{replyid})
+    </insert>
 
     <update id="updateVote" parameterType="int">
         UPDATE housing_reply set vote = vote + 1 where id = #{replyId}
+    </update>
+
+    <update id="deleteVote" parameterType="int">
+        UPDATE housing_reply set vote = vote - 1 where id = #{replyId}
     </update>
 
     <delete id="deleteContent" parameterType="int">
@@ -23,6 +31,9 @@
     <delete id="deleteRelation" parameterType="int">
         delete from housing_info_reply where replyid=#{replyId};
     </delete>
+    <delete id="deleteUR">
+        delete from housing_reply_user where replyid=#{replyid} and userid=#{userid}
+    </delete>
 
     <select id="showAllForId" resultType="com.football.housingplatform.dao.domain.Content">
         select * from housing_reply r, housing_info_reply ir where ir.infoid = #{id} and ir.replyid = r.id
@@ -30,6 +41,9 @@
 
     <select id="findUserId" parameterType="int" resultType="int">
         select userid from housing_info_reply where replyid=#{replyId}
+    </select>
+    <select id="findUR" resultType="java.lang.Integer">
+        select id from housing_reply_user where replyid=#{replyid} and userid=#{userid}
     </select>
 
 </mapper>

@@ -2,9 +2,13 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.football.housingplatform.dao.mapper.InfoMapper">
-    <insert id="addInfo">
+    <insert id="addInfo" useGeneratedKeys="true" keyProperty="id" keyColumn="id" >
         insert into housing_info(id, site, area, price, description)
         values(null,#{site},#{area},#{price},#{description})
+    </insert>
+    <insert id="mergeInfo">
+        insert into housing_info_user(infoid, userid)
+        values (#{infoId},#{userId})
     </insert>
 
     <delete id="deleteInfoById" parameterType="int">

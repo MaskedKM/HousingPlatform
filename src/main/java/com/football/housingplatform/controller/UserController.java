@@ -38,6 +38,7 @@ public class UserController {
             modelAndView.setViewName("Login");
         }
         else{
+            session.removeAttribute("userId");
             session.setAttribute("userId",k);
             modelAndView.setViewName("redirect:/info/list");
         }

@@ -61,8 +61,9 @@ public class ContentController {
     }
 
     @RequestMapping(value = "/vote/{replyId}")
-    public String vote(@PathVariable("replyId") int replyId){
-        contentService.updateVote(replyId);
+    public String vote(@PathVariable("replyId") int replyId, HttpSession session){
+        int userId = (int)session.getAttribute("userId");
+        contentService.updateVote(replyId, userId);
         int infoId = infoService.findIdByReplyId(replyId);
         return "redirect:/reply/message/"+infoId;
     }

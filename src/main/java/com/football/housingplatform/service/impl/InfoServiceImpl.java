@@ -20,9 +20,11 @@ public class InfoServiceImpl implements InfoService {
         return housingInfos;
     }
 
+    @Transactional
     @Override
-    public void addInfo(HousingInfo HI) {
-        infoMapper.addInfo(HI);
+    public void addInfo(HousingInfo HI,int userId) {
+        int infoid = infoMapper.addInfo(HI);
+        infoMapper.mergeInfo(infoid,userId);
     }
 
     @Transactional

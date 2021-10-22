@@ -26,9 +26,16 @@ public class ContentServiceImpl implements ContentService {
         cm.addRelation(Infoid, replyid, userId);
     }
 
+    @Transactional
     @Override
-    public void updateVote(int replyId) {
-        cm.updateVote(replyId);
+    public void updateVote(int replyId, int userId) {
+        if (cm.findUR(replyId, userId) == null){
+            cm.updateVote(replyId);
+            cm.insertUR(replyId, userId);
+        }else {
+            cm.deleteVote(replyId);
+            cm.deleteUR(replyId, userId);
+        }
     }
 
     @Transactional

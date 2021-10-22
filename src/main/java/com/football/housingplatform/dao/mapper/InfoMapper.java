@@ -13,7 +13,7 @@ public interface InfoMapper {
 
     List<HousingInfo> selectAll();
 
-    void addInfo(HousingInfo HI);
+    int addInfo(HousingInfo HI);
 
     void deleteInfoById(int id);
 
@@ -24,4 +24,6 @@ public interface InfoMapper {
     HousingInfo findById(int infoId);
 
     void deleteRelation(int infoId);
+
+    void mergeInfo(int infoId,int userId);
 }
