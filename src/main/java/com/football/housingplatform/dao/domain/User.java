@@ -70,6 +70,7 @@ public class User {
 
     private int authority;
 
+
     @Override
     public String toString() {
         return "User{" +
@@ -77,6 +78,7 @@ public class User {
                 ", password='" + password + '\'' +
                 ", id=" + id +
                 ", address='" + address + '\'' +
+                ", face=" + face +
                 ", authority=" + authority +
                 '}';
     }
