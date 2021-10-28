@@ -19,4 +19,5 @@ public interface ContentMapper {
     void deleteUR(int replyid, int userid);
     int findUserId(int replyId);
     void deleteVote(int replyid);
+    void deleteURByReplyId(int replyId);
 }

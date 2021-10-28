@@ -64,9 +64,12 @@ public class InfoController {
     }
 
     @RequestMapping(value = "/search",method = RequestMethod.POST)
-    public ModelAndView searchBySite(HttpServletRequest request){
+    public ModelAndView searchBySite(HttpServletRequest request, HttpSession session){
         ModelAndView modelAndView = new ModelAndView();
         String site = request.getParameter("site");
+        int userId = (int)session.getAttribute("userId");
+        User user = userService.getInfobyId(userId);
+        modelAndView.addObject("user",user);
         List<HousingInfo> infoServiceList = infoService.findBySite(site);
         modelAndView.addObject("infoServiceList", infoServiceList);
         modelAndView.setViewName("InfoList");

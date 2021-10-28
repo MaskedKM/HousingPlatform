@@ -3,7 +3,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-    <title>Title</title>
+    <title>首页</title>
     <script>function checkReply(id) {
         location.href="${pageContext.request.contextPath}/reply/message/"+ id;
     }
@@ -20,7 +20,7 @@
 </head>
 <body>
     <div class="Head" >
-        <h1>包 租 婆 </h1>${user.name}<img src="/face/${user.face}.jpg" width="30" height="30" onclick="myPage(${user.id})"/>
+        <h1>绷 得 住</h1>${user.name}<img src="/face/${user.face}.jpg" width="30" height="30" onclick="myPage(${user.id})"/>
     </div>
     <form action="${pageContext.request.contextPath}/info/search" method="post">
         <td class="kuang">
@@ -51,6 +51,9 @@
             </tr>
         </c:forEach>
     </table>
+    <p>
+        <input type="button" value="添加信息" onclick="location.href='${pageContext.request.contextPath}/info/addInfo'"/>
+    </p>
 
     <style>
         body{

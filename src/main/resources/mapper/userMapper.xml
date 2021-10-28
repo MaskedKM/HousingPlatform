@@ -3,8 +3,8 @@
 
 <mapper namespace="com.football.housingplatform.dao.mapper.UserMapper">
     <insert id="InsertUser" parameterType="com.football.housingplatform.dao.domain.User">
-        insert into housing_user(name,password,address,authority)
-        values(#{name},#{password},#{address},#{authority})
+        insert into housing_user(name,password,address,authority,face)
+        values(#{name},#{password},#{address},#{authority},#{face})
     </insert>
     <update id="updateUserById">
         update housing_user set name = #{name}, address = #{address} WHERE id=#{id}

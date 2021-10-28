@@ -34,6 +34,9 @@
     <delete id="deleteUR">
         delete from housing_reply_user where replyid=#{replyid} and userid=#{userid}
     </delete>
+    <delete id="deleteURByReplyId">
+        delete from housing_reply_user where replyid=#{replyid}
+    </delete>
 
     <select id="showAllForId" resultType="com.football.housingplatform.dao.domain.Content">
         select * from housing_reply r, housing_info_reply ir where ir.infoid = #{id} and ir.replyid = r.id

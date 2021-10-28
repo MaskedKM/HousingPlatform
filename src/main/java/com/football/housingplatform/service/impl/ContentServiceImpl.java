@@ -41,6 +41,7 @@ public class ContentServiceImpl implements ContentService {
     @Transactional
     public void deleteContent(int replyId){
         cm.deleteRelation(replyId);
+        cm.deleteURByReplyId(replyId);
         cm.deleteContent(replyId);
     }
 

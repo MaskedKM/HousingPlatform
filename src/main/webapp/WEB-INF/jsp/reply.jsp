@@ -12,7 +12,7 @@
 <%@ page import="com.football.housingplatform.dao.domain.User" %>
 <html>
 <head>
-    <title>房产信息</title>
+    <title>评论信息</title>
     </script>
 </head>
 
@@ -25,7 +25,14 @@
     }
 </script>
 <body>
-<table>
+<table border="1" >
+    <tr>
+        <th>编号</th>
+        <th>地址</th>
+        <th>面积</th>
+        <th>价格</th>
+        <th>描述</th>
+    </tr>
     <tr>
         <td>${HousingInfo.id}</td>
         <td>${HousingInfo.site}</td>
@@ -33,21 +40,33 @@
         <td>${HousingInfo.price}</td>
         <td>${HousingInfo.description}</td>
     </tr>
+</table>
     <%
         int cont = 0;
     %>
+<table border="1">
+    <tr>
+        <th>编号</th>
+        <th>评论</th>
+        <th>点赞</th>
+        <th>时间</th>
+        <th>评论人</th>
+        <th>操作</th>
+    </tr>
     <c:forEach var="content" items="${contentList}">
         <tr>
             <td>${content.id}</td>
             <td>${content.message}</td>
             <td><label>${content.vote}</label></td>
             <td>${content.time}</td>
-            <td><input type="submit" value="点赞" name="vote" onclick="Vote(${content.id})"/></td>
-            <td><input type="submit" value="删除" name="vote" onclick="DeleteContent(${content.id})"/></td>
             <td>${content.userName}</td>
+            <td>
+                <input type="submit" value="点赞" name="vote" onclick="Vote(${content.id})"/>
+                <input type="submit" value="删除" name="vote" onclick="DeleteContent(${content.id})"/>
+            </td>
         </tr>
     </c:forEach>
-
+</table>
         <form action="${pageContext.request.contextPath}/reply/add/${infoId}" method="post">
             <tr>
                 <td>内容:</td>
